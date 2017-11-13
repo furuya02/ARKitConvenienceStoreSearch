@@ -10,7 +10,6 @@ import Foundation
 import CoreLocation
 
 class Place {
-    //https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=軽度,緯度&radius=距離（ｍ）&types=convenience_store&key=APIキー
     var name: String = ""
     var vicinity: String = ""
     var location: CLLocation

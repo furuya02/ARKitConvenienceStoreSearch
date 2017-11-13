@@ -10,6 +10,8 @@
 		275D1FEF1FB9723A00C86D9F /* UITableView+TouchEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275D1FEE1FB9723A00C86D9F /* UITableView+TouchEvent.swift */; };
 		275D1FF11FB98F8400C86D9F /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275D1FF01FB98F8400C86D9F /* Place.swift */; };
 		275D1FF41FB993B100C86D9F /* SecretKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275D1FF31FB993B100C86D9F /* SecretKey.swift */; };
+		275D1FF61FB9971E00C86D9F /* PlaceRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275D1FF51FB9971E00C86D9F /* PlaceRepository.swift */; };
+		275D1FF81FB997E900C86D9F /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275D1FF71FB997E900C86D9F /* LocationManager.swift */; };
 		27BFFF471FB8022A0031CB0E /* SelectSearchKeyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27BFFF461FB8022A0031CB0E /* SelectSearchKeyViewController.swift */; };
 		27BFFF491FB8023B0031CB0E /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27BFFF481FB8023B0031CB0E /* MapViewController.swift */; };
 		27BFFF4B1FB9002E0031CB0E /* SearchKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27BFFF4A1FB9002E0031CB0E /* SearchKey.swift */; };
@@ -25,6 +27,8 @@
 		275D1FEE1FB9723A00C86D9F /* UITableView+TouchEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+TouchEvent.swift"; sourceTree = "<group>"; };
 		275D1FF01FB98F8400C86D9F /* Place.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
 		275D1FF31FB993B100C86D9F /* SecretKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecretKey.swift; sourceTree = "<group>"; };
+		275D1FF51FB9971E00C86D9F /* PlaceRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceRepository.swift; sourceTree = "<group>"; };
+		275D1FF71FB997E900C86D9F /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		27BFFF461FB8022A0031CB0E /* SelectSearchKeyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectSearchKeyViewController.swift; sourceTree = "<group>"; };
 		27BFFF481FB8023B0031CB0E /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		27BFFF4A1FB9002E0031CB0E /* SearchKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchKey.swift; sourceTree = "<group>"; };
@@ -55,6 +59,8 @@
 				27BFFF4A1FB9002E0031CB0E /* SearchKey.swift */,
 				275D1FF01FB98F8400C86D9F /* Place.swift */,
 				275D1FF31FB993B100C86D9F /* SecretKey.swift */,
+				275D1FF51FB9971E00C86D9F /* PlaceRepository.swift */,
+				275D1FF71FB997E900C86D9F /* LocationManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -168,7 +174,9 @@
 			files = (
 				27BFFF471FB8022A0031CB0E /* SelectSearchKeyViewController.swift in Sources */,
 				275D1FF41FB993B100C86D9F /* SecretKey.swift in Sources */,
+				275D1FF81FB997E900C86D9F /* LocationManager.swift in Sources */,
 				27D94E611FB7F01800DABC20 /* MainViewController.swift in Sources */,
+				275D1FF61FB9971E00C86D9F /* PlaceRepository.swift in Sources */,
 				27D94E5D1FB7F01800DABC20 /* AppDelegate.swift in Sources */,
 				27BFFF491FB8023B0031CB0E /* MapViewController.swift in Sources */,
 				275D1FEF1FB9723A00C86D9F /* UITableView+TouchEvent.swift in Sources */,

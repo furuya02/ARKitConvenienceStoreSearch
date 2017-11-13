@@ -26,7 +26,7 @@ class SelectSearchKeyViewController: UIViewController {
     
     func createPlaces() -> [SearchKey] {
         var places:[SearchKey] = []
-        places.append(SearchKey(title: "コンビニ", key: "combinience", image: UIImage(named: "convenienceStore")!))
+        places.append(SearchKey(title: "コンビニ", key: "convenience_Place", image: UIImage(named: "convenienceStore")!))
         places.append(SearchKey(title: "ホテル", key: "hotel", image: UIImage(named: "hotel")!))
         places.append(SearchKey(title: "ガソリンスタンド", key: "gasstand", image: UIImage(named: "gasStation")!))
         places.append(SearchKey(title: "駐車場", key: "parcking", image: UIImage(named: "parking")!))
