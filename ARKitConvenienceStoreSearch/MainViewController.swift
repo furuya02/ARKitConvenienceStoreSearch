@@ -18,6 +18,7 @@ class MainViewController: UIViewController, ARSCNViewDelegate {
     let placeRepository = PlaceRepository()
     var location: CLLocation?
     var trueHeading: CLLocationDirection?
+    var activityIndicator: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +28,15 @@ class MainViewController: UIViewController, ARSCNViewDelegate {
         
         sceneView.delegate = self
         sceneView.scene = SCNScene()
+        
+        // インジケーター
+        activityIndicator = UIActivityIndicatorView()
+        activityIndicator.frame = CGRect(x: 0, y: 0, width: 150, height: 150)
+        activityIndicator.center = self.view.center
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.white
+        self.view.addSubview(activityIndicator)
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -51,8 +61,14 @@ class MainViewController: UIViewController, ARSCNViewDelegate {
    
     }
     
-    @IBAction func backFromPlaceSearchView(segue:UIStoryboardSegue){
-        NSLog("backFromPalceSearchView")
+    @IBAction func selectedSearchKey(segue:UIStoryboardSegue){
+        let vc = segue.source as! SelectSearchKeyViewController
+        let serachKey = vc.searchKeys[vc.selectedIndex]
+        print(serachKey.title)
+        if let location = location {
+            activityIndicator.startAnimating()
+            placeRepository.search(location: location, type: serachKey.key)
+        }
     }
     
     @IBAction func tapButton(_ sender: Any) {
@@ -107,15 +123,16 @@ extension MainViewController: PlaceRepositoryDelegate {
         for (i, place) in places.enumerated() {
             print("\(i) \(round(place.distance*100)/100)m \(place.name)")
         }
+        DispatchQueue.main.async {
+            self.activityIndicator.stopAnimating()
+        }
     }
 }
 
-
 extension MainViewController: LocationManagerDelegate {
     func locationManagerDidUpdateLocation(location: CLLocation) {
-        print("😀　latitude(北緯)=\(location.coordinate.latitude) 　longitude（東経）=\(location.coordinate.longitude)")
+        //print("😀　latitude(北緯)=\(location.coordinate.latitude) 　longitude（東経）=\(location.coordinate.longitude)")
         self.location = location
-        
         
         //        print("札幌駅 \(location.angle(to: CLLocation(latitude: 43.068888, longitude: 141.350723)))")
         //        print("定山渓温泉 \(location.angle(to: CLLocation(latitude: 42.968980, longitude: 141.166929)))")
@@ -125,11 +142,9 @@ extension MainViewController: LocationManagerDelegate {
         //        print("釧路 \(location.angle(to: CLLocation(latitude: 42.990663, longitude: 144.381835)))")
         //        print("苫小牧 \(location.angle(to: CLLocation(latitude: 42.654652, longitude: 141.689278)))")
         //        print("小樽 \(location.angle(to: CLLocation(latitude: 43.200934, longitude: 141.018010)))")
-        
     }
     
     func locationManagerDidUpdateHeading(trueHeading: CLLocationDirection, magneticHeading: CLLocationDirection, accuracy: CLLocationDirection) {
-        //print("😀 trueHeading = \(trueHeading) accuracy = \(accuracy)")
         self.trueHeading = trueHeading
     }
 }

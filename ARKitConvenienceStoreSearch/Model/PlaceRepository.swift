@@ -32,12 +32,12 @@ class PlaceRepository {
     let max = 10
     //    let GOOGLE_API_KEY = "xxxxxxxxxxxxxxxxxxxxxx" <= 別ファイル（SecretKey.swift）に定義されており、github上では、公開されていません
     let googleApyKey = GOOGLE_API_KEY
-    let type = "convenience_Place"
-    
+    var type = ""
     private var Places: [Place] = []
     private var keep: [Place] = []
     
-    func search(location: CLLocation) {
+    func search(location: CLLocation, type: String) {
+        self.type = type
         let radius:CGFloat = 3000
         let mode = 0 // スタート:0 範囲を拡大:1 範囲を縮小:-1
         keep = []

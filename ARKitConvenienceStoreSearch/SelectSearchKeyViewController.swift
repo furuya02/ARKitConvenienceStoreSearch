@@ -11,8 +11,8 @@ import UIKit
 class SelectSearchKeyViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
-    private var searchKeys:[SearchKey] = []
-    private var selectedIndex = -1
+    var searchKeys:[SearchKey] = []
+    var selectedIndex = -1
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,28 +20,29 @@ class SelectSearchKeyViewController: UIViewController {
         prepare()
     }
 
+    func createPlaces() -> [SearchKey] {
+        var places:[SearchKey] = []
+        places.append(SearchKey(title: "コンビニ", key: "convenience_store", image: UIImage(named: "convenienceStore")!))
+        places.append(SearchKey(title: "ホテル", key: "lodging", image: UIImage(named: "hotel")!))
+        places.append(SearchKey(title: "ガソリンスタンド", key: "gas_station", image: UIImage(named: "gasStation")!))
+        places.append(SearchKey(title: "駐車場", key: "parking", image: UIImage(named: "parking")!))
+        places.append(SearchKey(title: "駅（電車）", key: "train_station", image: UIImage(named: "station")!))
+        places.append(SearchKey(title: "駅（バス）", key: "bus_station", image: UIImage(named: "bus")!))
+        return places
+    }
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
-    func createPlaces() -> [SearchKey] {
-        var places:[SearchKey] = []
-        places.append(SearchKey(title: "コンビニ", key: "convenience_Place", image: UIImage(named: "convenienceStore")!))
-        places.append(SearchKey(title: "ホテル", key: "hotel", image: UIImage(named: "hotel")!))
-        places.append(SearchKey(title: "ガソリンスタンド", key: "gasstand", image: UIImage(named: "gasStation")!))
-        places.append(SearchKey(title: "駐車場", key: "parcking", image: UIImage(named: "parking")!))
-        places.append(SearchKey(title: "駅", key: "station", image: UIImage(named: "station")!))
-        return places
-    }
-    
+    // Cellが選択された場合も、Cell以外が選択された場合も、ここで処理する（UITableView+TouchEvent.swift）
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         let point = touches.first?.location(in: tableView)
         if let indexPath = tableView.indexPathForRow(at: point!) {
             self.selectedIndex = indexPath.row
             self.tableView.reloadData()
-            print("search key:\(self.searchKeys[selectedIndex].key)")
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-                self.dismiss(animated: true, completion: nil)
+                self.performSegue(withIdentifier: "selectedSearchKeySegue", sender: nil)
             }
         } else {
             dismiss(animated: true, completion: nil)
@@ -49,7 +50,6 @@ class SelectSearchKeyViewController: UIViewController {
     }
 
     func prepare(){
-        
         tableView.dataSource = self
         searchKeys = createPlaces()
         view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
